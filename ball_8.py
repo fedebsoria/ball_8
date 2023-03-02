@@ -46,17 +46,26 @@ def answer_precise_questions(question):
         result_question = True
     return result_question
 
+def grettings(name):
+    print("Pleased to meet you {}, feel welcome.\n If you want to leave say GOOD BYE.\n".format(name))
+
 def main():
     name = ask_name()
+    grettings(name)
     while True:
         answer_number = generate_random_answer()
         question = enter_question()
         result_question = answer_precise_questions(question)
+
+        if question == "bye" or question == "GOOD BYE" or question == "good bye":
+            break
+
         if result_question != True:
             script_answer = answer(answer_number)
             print(script_answer)
-        elif question == "bye":
-            break
+
+    print("Good Bye")
+
 
 
     
