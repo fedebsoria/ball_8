@@ -2,6 +2,7 @@ import random
 
 answer_number = 0
 
+#generates a  randon number for a random answer
 def generate_random_answer():
     r_number = random.randint(1, 9)
     return r_number
@@ -10,6 +11,7 @@ def ask_name():
     name = input("Enter your name and ask a question. I'll see your faith...\n")
     return name
 
+#this asks the question and if there's nothing written asks for a question
 def enter_question():
     question = input("Make me a question, don't fear the future.\n")
     while len(question) <= 0:
@@ -17,6 +19,7 @@ def enter_question():
         return question
     return question
 
+#The different answers
 def answer(number):
     response = ""
     if number == 9:
@@ -39,7 +42,9 @@ def answer(number):
         response ="Yes, that will make you happy.\n"
     return response
 
+#checks if the question has the word "lottery" in it and it gives an special answer
 def answer_precise_questions(question):
+    #when the question has "lottery" returns a True statement
     result_question = False
     if "lottery" in question:
         print("I do not gamble, but you do, so... I don't know... {} maybe?\n".format(str(random.randint(1111, 9999))))
@@ -55,16 +60,17 @@ def main():
     while True:
         answer_number = generate_random_answer()
         question = enter_question()
+        #if the question has "lottery" in it the value of result is True, else False
         result_question = answer_precise_questions(question)
-
+        #end loop
         if question == "bye" or question == "GOOD BYE" or question == "good bye":
             break
 
         if result_question != True:
             script_answer = answer(answer_number)
             print(script_answer)
-
-    print("Good Bye")
+            
+    print("\nGood bye. See you soon...")
 
 
 
@@ -73,4 +79,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    #test
